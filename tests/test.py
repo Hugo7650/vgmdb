@@ -1,4 +1,4 @@
-import unittest
+import time
 import random
 from vgmdb import VGMdb
 
@@ -8,3 +8,4 @@ def test():
         id = random.randint(1, 131900)
         result = VGMdb.get_album(id)
         print(id, result)
+        time.sleep(1)
