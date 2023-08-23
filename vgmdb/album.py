@@ -172,7 +172,15 @@ class Album(VGMdbObject):
                 orgs = value.xpath("./a")
                 self.marketer = [vgmdb.Org.from_element(org) for org in orgs]
             else:
-                raise ValueError(f"Unknown label {label}")
+                try:
+                    orgs = value.xpath("./a")
+                    setattr(
+                        self,
+                        label.lower().replace(" ", "_"),
+                        [vgmdb.Org.from_element(org) for org in orgs],
+                    )
+                except AttributeError:
+                    raise ValueError(f"Unknown label {label}")
         if not hasattr(self, "media_format"):
             self.media_format = "CD"
 
