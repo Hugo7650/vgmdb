@@ -20,9 +20,8 @@ albums = VGMdb.search_albums('Final Fantasy')
 # Get album by ID
 album = VGMdb.get_album(1)
 
-# Set cookies
+# Set cookies (with login, there is more covers available)
 VGMdb.set_cookies({'key': 'value'})
-# with login, there is more covers available
 
 # Set proxies
 VGMdb.set_proxies('https://host:port')
