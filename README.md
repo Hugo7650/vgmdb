@@ -17,6 +17,10 @@ results = VGMdb.search('Final Fantasy')
 # Search albums
 albums = VGMdb.search_albums('Final Fantasy')
 
+# Get album details from search results
+album = albums[0]
+album.get_details()
+
 # Get album by ID
 album = VGMdb.get_album(1)
 

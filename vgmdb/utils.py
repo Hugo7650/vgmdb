@@ -4,6 +4,8 @@ from abc import ABC
 from lxml import etree
 import datetime
 
+import vgmdb
+
 
 class VGMdbType(Enum):
     Album = 0
@@ -186,6 +188,11 @@ class VGMdbObject(ABC):
 
     def __str__(self) -> str:
         return self.name.en or self.name.ja or self.name.ja_latn or ""
+    
+    def get_detail(self) -> "VGMdbObject":
+        new_object = vgmdb.VGMdb.get(self.id, self.type)
+        self.__dict__.update(new_object.__dict__)
+        return self
 
 
 def parse_date(date: str) -> datetime.date | None:
